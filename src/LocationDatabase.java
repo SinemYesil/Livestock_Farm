@@ -14,7 +14,7 @@ public class LocationDatabase {
     );
 
 
-    public static LocationDatabase getInstance() {
+    public static synchronized LocationDatabase getInstance() {
         if (instance == null) {
             instance = new LocationDatabase();
         }
