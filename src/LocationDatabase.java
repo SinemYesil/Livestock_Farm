@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class LocationDatabase {
+public class LocationDatabase implements Subject{
 
 
     private static LocationDatabase instance;
@@ -14,7 +14,7 @@ public class LocationDatabase {
     );
 
 
-    public static LocationDatabase getInstance() {
+    public static synchronized LocationDatabase getInstance() {
         if (instance == null) {
             instance = new LocationDatabase();
         }
@@ -44,6 +44,7 @@ public class LocationDatabase {
     public void removeObserver(Observer o) {
         observers.remove(o);
     }
+    
 
     public void notifyObservers(String id, String location) {
         for (Observer o : observers) {
